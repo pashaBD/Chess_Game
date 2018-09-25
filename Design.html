@@ -4,7 +4,13 @@
 	<title>Chess Game using JS</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="Style.css"/>
-</head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	
+<!-- <script src="Implement.js"></script> -->
+	</head>
 <body>
 	<div id="game">
 		<div class="cellprefix">8</div>
@@ -96,9 +102,59 @@
 		<div class="cellprefix">f</div>
 		<div class="cellprefix">g</div>
 		<div class="cellprefix">h</div>
-
-		<div id="turn">White's Turn!!! </div>
-
+		<!-- <div id="turn">White's Turn!!! </div> -->
+	
+		<div class="form-group"> 			
+			<input type="text" id="inputMove" class="form-control" placeholder="Enter Your Move Ex. row_column" width="60px">		
+		</div>	
+		<button type="submit" class="btn btn-primary" id="set_position" >Restart</button>			
+		<!-- <p id="showMove"></p> -->
+		<!-- <p id="demo"></p> -->
+	
 	</div>
+	
 </body>
+
+<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+<script>
+
+	
+		// function moveFunction()
+		// {
+		// 	var pattern = "/ [\d]{1} /";
+		// 	var pattern = "[1-8]+_[1-8]"; 
+		// 	var move = document.getElementById("inputMove").value;
+		// 	document.getElementById("showMove").innerHTML = move;
+		// 	if(!move.match(pattern))
+		// 	// alert(move.match(pattern)); 
+		// 	alert("Please Input Valid Move");
+		// 	return move.match(pattern);
+		// }
+
+		var prev = '1_1';
+		// $('#'+prev).html('&#9816;');
+		$('#set_position').on('click', function() {
+			//  var pattern = "/ [\d]{1} /";
+			 var pattern = ("^[1-8]{1}_[1-8]{1}$"); 
+			 var move = document.getElementById("inputMove").value;
+			if(!move.match(pattern))
+			{
+				alert("Please give a valid move!");
+			}
+			
+			else
+			{
+				$('#'+prev).html('');
+				$('#'+move).html('&#9816;');
+				prev = move;
+			}
+		});
+		
+    
+    
+	</script>
+	
 </html>
