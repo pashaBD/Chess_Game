@@ -13,6 +13,14 @@
 	</head>
 <body>
 	<div id="game" class="row col-12 border">
+		<div>
+			<div style="padding:0px 30px">
+				<label class="switch">
+						<input type="checkbox" id="checks">
+						<span class="slider round"></span>
+				</label>
+			</div>
+		</div>
 		<div class="cellprefix">8</div>
 		<div class="gamecell oppositionColor" id="a8"></div>
 		<div class="gamecell boardColor" id="b8"></div>
@@ -102,6 +110,7 @@
 		<div class="cellprefix">f</div>
 		<div class="cellprefix">g</div>
 		<div class="cellprefix">h</div>
+	
 		<!-- <div id="turn">White's Turn!!! </div> -->
 	
 		<!-- <span class="form-group" style="margin-left:auto; margin-right:0"> 		
@@ -133,7 +142,7 @@
 							<button type="submit" class="btn btn-primary" id="set_position">Restart</button>
 						</span>   -->
 						
-			</div>			   			                                			   
+			</div>		  			                                			   
 		<!-- <p id="showMove"></p> -->
 		<!-- <p id="demo"></p> -->
 	
@@ -170,15 +179,24 @@
 			if(!a.match(pattern))
 			{
 				$('#'+prev).html('');
-				document.getElementById("error").innerHTML = "Wrong Move";
+				document.getElementById("error").innerHTML = "<i>Wrong Move</i>";
 			}
 			
 			else
 			{
+				var horse_color = '';
+				
+				if($('#checks').is(':checked'))
+				{
+					horse_color = '&#9816;';
+				} else {
+					horse_color = '&#9822;';
+				}
 				$('#'+prev).html('');
-				$('#'+a).html('&#9822;').css('text-align','center'); // white:&#9816; black: &#9822;
+				$('#'+a).html(horse_color).css('text-align','center'); // white:&#9816; black: &#9822; 
 				prev = a;
 				document.getElementById("error").innerHTML = "";
+				
 			}
 		});
 		
